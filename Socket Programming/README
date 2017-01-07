@@ -1,0 +1,53 @@
+a. Your Full Name as given in the class list
+	INNYOUNG HUR
+
+b. Your Student ID
+	2328933738
+
+c. What you have done in the assignment
+	I have completed the assignment which was given for socket programming project.
+	All three phases work well, and I used fork() system call to create child processes, and I made "makefile" to compile source codes easily.
+	TCP and UDP connections are used to transmit information, and the client can calculate minimum spanning tree.
+
+d. What your code files are and what each one of them does. (Please do not repeat the project description, just name your code files and briefly mention what they do).
+	client.h : client.cpp's header file
+	client.cpp : Open TCP server and get server's information. Open UDP connection to servers to send network topology. Calculate minimum spanning tree.
+	server.h : server.cpp's header file
+	server.cpp : Open TCP connection to client to send neighbor information. Open UDP server to get network topology from client.
+	makefile : This file is used to make compile easy.
+
+e. What the TA should do to run your programs. (Any specific order of events should be mentioned.)
+	1) Log on to the nunki.usc.edu in a console window(putty)
+	1) Make a directory and copy client.h, client.cpp, server.h, server.cpp, serverA.txt, serverB.txt, serverC.txt, serverD.txt and makefile into the directory.
+	2) In the directory, type "make"
+	3) type "client"
+	4) Open another console window and log on to the nunki.usc.edu. Move to the directory where files exist
+	5) type "server"
+	6) Client and server interacts each other. If you want to stop, just press enter or Ctrl+c
+
+f. The format of all the messages exchanged.
+	I converted all the information such as matrix into string which are seperated by a space and send to the other host.
+	If it's not the matrix, I just sent the original file's text as string.
+	To distinguish which server sent which information, I added special string at the beginning of the string such as "serverA", "serverB", "serverC" or "serverD", and parsed from the client.
+
+g. Any idiosyncrasy of your project. It should say under what conditions the project fails, if any.
+	There was no idiosyncrasy.
+
+h. Reused Code: Did you use code from anywhere for your project? If not, say so. If so, say what functions and where they're from. (Also identify this with a comment in the source code.)
+	I reused code from Beej's Guide to Network Programming and stackoverflow.
+	In client.cpp,
+		unsigned short int Client::getPort(int sockfd) => stackoverflow
+		void Client::dnsWork() => Beej's Guide to Network Programming
+		void sigchld_handler(int s) => Beej's Guide to Network Programming
+		void *get_in_addr(struct sockaddr *sa) => Beej's Guide to Network Programming
+		void Client::tcpServer() => Beej's Guide to Network Programming
+		void Client::udpConnect() => Beej's Guide to Network Programming
+	In server.cpp,
+		string Server::getIP(struct addrinfo *addrInfo) => Beej's Guide to Network Programming
+		unsigned short int Server::getPort(int sockfd) => stackoverflow
+		void *get_in_addr(struct sockaddr *sa) => Beej's Guide to Network Programming
+		void Server::tcpConnect() => Beej's Guide to Network Programming
+		void Server::udpServer() => Beej's Guide to Network Programming
+		void sigchld_handler(int s) => Beej's Guide to Network Programming
+		
+		
